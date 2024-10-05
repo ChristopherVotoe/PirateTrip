@@ -138,11 +138,9 @@ function displayTopArtists(artists) {
 
         // Append the artist element to the top artists container
         artistsContainer.appendChild(artistElement);
+        console.log("breaky?")
     });
 }
-
-// Get the authorization code from the URL
-
 
 // If authorization code is present, exchange it for an access token
 if (code) {
