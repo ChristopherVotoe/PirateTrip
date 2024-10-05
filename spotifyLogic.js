@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', () => {
+
 const CLIENT_ID = "ee4076029ed6442c846d3c348110115f";  // Your Client ID
 const redirectUri = 'http://127.0.0.1:5500/Page2.html';            // Redirect URI (set this in your Spotify app)
 const scope = 'user-read-private user-read-email user-top-read';      // Spotify permissions you're requesting
@@ -21,37 +23,25 @@ function generateRandomString(length) {
     return result;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const authButton = document.getElementById('authButton');
-    if (authButton) {
-        authButton.addEventListener('click', async () => {
-            const codeVerifier = generateRandomString(128);
-            const codeChallenge = await generateCodeChallenge(codeVerifier);
 
-            // Store the code_verifier for later
-            localStorage.setItem('code_verifier', codeVerifier);
-
-            const authUrl = new URL("https://accounts.spotify.com/authorize");
-
-            const params = {
-                response_type: 'code',
-                client_id: CLIENT_ID,
-                scope: scope,
-                code_challenge_method: 'S256',
-                code_challenge: codeChallenge,
-                redirect_uri: redirectUri
-            };
-
-            authUrl.search = new URLSearchParams(params).toString();
-
-            // Redirect to Spotify's authorization page
-            window.location.href = authUrl.toString();
-        });
-    } else {
-        console.error("authButton element not found");
-    }
+document.getElementById('authButton').addEventListener('click', async () => {
+    const codeVerifier = generateRandomString(128);
+    const codeChallenge = await generateCodeChallenge(codeVerifier);
+    // Store the code_verifier for later
+    localStorage.setItem('code_verifier', codeVerifier);
+    const authUrl = new URL("https://accounts.spotify.com/authorize");
+    const params = {
+        response_type: 'code',
+        client_id: CLIENT_ID,
+        scope: scope,
+        code_challenge_method: 'S256',
+        code_challenge: codeChallenge,
+        redirect_uri: redirectUri
+    };
+    authUrl.search = new URLSearchParams(params).toString();
+    // Redirect to Spotify's authorization page
+    window.location.href = authUrl.toString();
 });
-
 
 // Exchange authorization code for access token
 async function exchangeToken(code, codeVerifier) {
@@ -81,6 +71,7 @@ async function exchangeToken(code, codeVerifier) {
         console.error('Error:', error);
     }
 }
+
 
 // Once redirected back from Spotify with an authorization code
 const urlParams = new URLSearchParams(window.location.search);
@@ -161,4 +152,4 @@ if (code) {
     });
 }
 
-
+});
