@@ -21,29 +21,37 @@ function generateRandomString(length) {
     return result;
 }
 
-document.getElementById('authButton').addEventListener('click', async () => {
-    const codeVerifier = generateRandomString(128);
-    const codeChallenge = await generateCodeChallenge(codeVerifier);
+document.addEventListener('DOMContentLoaded', () => {
+    const authButton = document.getElementById('authButton');
+    if (authButton) {
+        authButton.addEventListener('click', async () => {
+            const codeVerifier = generateRandomString(128);
+            const codeChallenge = await generateCodeChallenge(codeVerifier);
 
-    // Store the code_verifier for later
-    localStorage.setItem('code_verifier', codeVerifier);
+            // Store the code_verifier for later
+            localStorage.setItem('code_verifier', codeVerifier);
 
-    const authUrl = new URL("https://accounts.spotify.com/authorize");
+            const authUrl = new URL("https://accounts.spotify.com/authorize");
 
-    const params = {
-        response_type: 'code',
-        client_id: CLIENT_ID,
-        scope: scope,
-        code_challenge_method: 'S256',
-        code_challenge: codeChallenge,
-        redirect_uri: redirectUri
-    };
+            const params = {
+                response_type: 'code',
+                client_id: CLIENT_ID,
+                scope: scope,
+                code_challenge_method: 'S256',
+                code_challenge: codeChallenge,
+                redirect_uri: redirectUri
+            };
 
-    authUrl.search = new URLSearchParams(params).toString();
+            authUrl.search = new URLSearchParams(params).toString();
 
-    // Redirect to Spotify's authorization page
-    window.location.href = authUrl.toString();
+            // Redirect to Spotify's authorization page
+            window.location.href = authUrl.toString();
+        });
+    } else {
+        console.error("authButton element not found");
+    }
 });
+
 
 // Exchange authorization code for access token
 async function exchangeToken(code, codeVerifier) {
@@ -81,6 +89,7 @@ const code = urlParams.get('code');
 if (code) {
     const codeVerifier = localStorage.getItem('code_verifier');
     exchangeToken(code, codeVerifier); // Call function to exchange code for token
+    console.log("are you here??")
 }
 
 // This function fetches the user's top artists using the access token
@@ -117,7 +126,7 @@ function displayTopArtists(artists) {
     // Clear the container first
     artistsContainer.innerHTML = '';
 
-    // Loop through the artists and display their name and image
+
     artists.forEach(artist => {
         const artistElement = document.createElement('div');
         artistElement.classList.add('artist');
