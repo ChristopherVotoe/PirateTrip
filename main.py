@@ -1,8 +1,7 @@
 import requests
 import json
-top_artist = 'Taylor Swift'
-top_genre = 'Pop'
-
+#Bruno mars adele and ts
+top_artist = ["Bruno Mars", "Adele", "Taylor Swift"]
 with open('key.txt', 'r') as file:
     api_key = file.read()
     data = {
@@ -10,11 +9,11 @@ with open('key.txt', 'r') as file:
         "messages":[
             {
                 "role": "system",
-                "content": "You are a helpful assistant."
+                "content": "I will give you 3 artists that i enjoy and i would like you to send back locations i should visit based on that"
             },
             {
                 "role": "user",
-                "content": "Hello!"
+                "content": "tell me only the places no extra info" + ','.join(top_artist)
             }]
     }
     headers = {'Authorization': f'Bearer {api_key}', "Content-Type": "application/json"}
@@ -27,3 +26,5 @@ with open('key.txt', 'r') as file:
     ai_message = response['choices'][0]['message']['content']
     print(ai_message)
     #in therory this prints all we need???
+with open('output.txt', 'w') as file:
+    file.write(ai_message)
