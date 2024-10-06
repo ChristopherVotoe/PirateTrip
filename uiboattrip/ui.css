@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background: url('./assets/backbasics/backstill.png'); /* Set the background for the entire body */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ui-sequence {
+    width: 1500px; /* Match the background size for UI */
+    height: 1000px; /* Match the background size for UI */
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center perfectly in both directions */
+    z-index: 1; /* Make sure the UI sequence is above the background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px; /* Adjust vertical position */
+    margin-left: 0px; /* Adjust horizontal position */
+}
+
+/* Each UI Page (Transparent PNG Overlay) */
+.page {
+    width: 1500px; /* Match the 1500px width */
+    height: 1000px; /* Match the 1000px height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    position: absolute;
+}
+
+/* Manually adjust positioning for the UI sequence */
+.ui-manual-position {
+    position: relative;
+    margin-top: -50px; /* Adjust this value to move UI sequence up or down */
+    margin-left: -50px; /* Adjust this value to move UI sequence left or right */
+}
+
+.page img {
+    width: 1500px; /* Match the size of the background */
+    height: 1000px;
+}
+
+/* Transparent Overlay */
+.transparent-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1500px; /* Match the background size for UI */
+    height: 1000px; /* Match the background size for UI */
+    background: url('.'); /* Moving background image */
+    background-repeat: repeat-x;
+    background-size: contain;
+    opacity: 0.7;
+    z-index: 0; /* Place behind UI and boat scene */
+    animation: overlayScroll 100s linear infinite; /* Animation to move the overlay left */
+}
+
+/* Night container styling for the boat scene */
+.night {
+    position: relative;
+    height: 500px; /* Keep original size */
+    width: 750px;  /* Keep original size */
+    margin: 5rem auto;
+    background: url('./popassets/popback.png'); /* The background image for the night container */
+    background-size: cover;
+    box-shadow: 1px 2px 60px rgba(0, 0, 0, 0.4);
+    overflow-x: hidden;
+    z-index: 2;
+}
+
+/* Ground/Surface styling */
+.surface {
+    position: absolute; /* Position within the container */
+    bottom: 0; /* Align at the bottom of .night */
+    left: 0; /* Align to the left of .night */
+    height: 500px; /* Keep original size */
+    width: 750px;  /* Keep original size */
+    background: none; /* No default background image */
+    background-size: contain; /* Adjust background size to ensure correct scaling */
+    animation: scrollLeft 10s linear infinite; /* Animation to move the ground left */
+    z-index: 2; /* Position it above the .night container */
+}
+
+/* Billboard styling */
+.billboard {
+    position: absolute; /* Position relative to .night */
+    bottom: 0; /* Align at the bottom (same as .surface) */
+    left: 0; /* Align to the left of .night */
+    height: 500px; /* Keep original size */
+    width: 750px;  /* Keep original size */
+    background: none; /* No default background image */
+    background-size: contain; /* Adjust background size to ensure correct scaling */
+    animation: scrollLeft 10s linear infinite; /* Animation to move the billboard left */
+    z-index: 2; /* E3nsure it’s above the ground surface */
+}
+
+/* Boat styling with bounce animation */
+.boat {
+    position: absolute; /* Position relative to .night */
+    bottom: 0; /* Align at the bottom of .night */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust to perfectly center */
+    height: 500px; /* Keep original size */
+    width: 750px; /* Keep original size */
+    background: none; /* No default background image */
+    background-size: cover; /* Fill the entire boat container */
+    animation: bounce 1.5s ease-in-out infinite; /* Bouncing effect */
+    z-index: 3; /* Make sure the boat is on top of everything */
+}
+
+/* Keyframes for leftward motion */
+@keyframes scrollLeft {
+    0% {
+        background-position: 0 0; /* Start from the initial position */
+    }
+    100% {
+        background-position: -750px 0; /* Move left by the width of the container */
+    }
+}
+
+/* Keyframes for overlay scrolling motion */
+@keyframes overlayScroll {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -1500px 0; /* Move left by the width of the container */
+    }
+}
+
+/* Keyframes for boat bouncing effect */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0); /* Original position */
+    }
+    50% {
+        transform: translateX(-50%) translateY(-2px); /* Slight bounce up */
+    }
+}

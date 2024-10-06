@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PirateTrip</title>
+    <link rel="stylesheet" href="ui.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <!-- Transparent Overlay (Constant) -->
+    <div class="transparent-overlay"></div>
+
+    <!-- 10-Page UI Sequence Container -->
+    <div id="ui-sequence">
+        <!-- Each div represents a loading screen page with the PNG image as the transparent text overlay -->
+        <div class="page" id="page-1">
+            <img src="./assets/loadingassets/loading1.png">
+        </div>
+        <div class="page" id="page-2">
+            <img src="./assets/loadingassets/loading2.png">
+        </div>
+        <div class="page" id="page-3">
+            <img src="./assets/loadingassets/loading3.png">
+        </div>
+        <div class="page" id="page-4">
+            <img src="./assets/loadingassets/loading4.png">
+        </div>
+        <div class="page" id="page-5">
+            <img src="./assets/loadingassets/loading5.png">
+        </div>
+        <div class="page" id="page-6">
+            <img src="./assets/loadingassets/loading6.png">
+        </div>
+        <div class="page" id="page-7">
+            <img src="./assets/loadingassets/loading7.png">
+        </div>
+        <div class="page" id="page-8">
+            <img src="./assets/loadingassets/loading8.png">
+        </div>
+        <div class="page" id="page-9">
+            <img src="./assets/loadingassets/loading9.png">
+        </div>
+        <div class="page" id="page-10">
+            <img src="./assets/loadingassets/loading10.png">
+        </div>
+    </div>
+
+    <!-- Boat Scene Container (Initially Hidden) -->
+    <div id="boat-scene" style="display: none;">
+        <!-- Boat scene content goes here -->
+        <div class="night">
+            <div class="billboard"></div>
+            <div class="surface"></div>
+            <div class="boat"></div>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript File -->
+    <script src="ui.js"></script> <!-- Include your external JavaScript file -->
+</body>
+</html>
