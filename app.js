@@ -8,7 +8,7 @@
  */
 
 const clientId = "ee4076029ed6442c846d3c348110115f"; // your clientId
-const redirectUrl = "http://localhost:5500"; // your redirect URL - must be localhost URL and/or HTTPS
+const redirectUrl = "http://127.0.0.1:5500/uiboattrip/ui.html"; // your redirect URL - must be localhost URL and/or HTTPS
 
 const authorizationEndpoint = "https://accounts.spotify.com/authorize";
 const tokenEndpoint = "https://accounts.spotify.com/api/token";
@@ -61,7 +61,7 @@ if (code) {
 // If we have a token, we're logged in, so fetch user data and render logged in template
 if (currentToken.access_token) {
   const userData = await getUserData();
-  renderTemplate("main", "logged-in-template", userData);
+  renderTemplate("main", "logged-in-template", topArtist);
   renderTemplate("oauth", "oauth-template", currentToken);
 }
 

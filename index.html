@@ -3,7 +3,7 @@
 
 <head>
   <title>Example of the Authorization Code with PKCE flow with Spotify</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet">
 </head>
 
 <body>
@@ -12,9 +12,26 @@
   <div id="oauth"></div>
 
   <template id="login">
-    <h1>Welcome to the OAuth2 PKCE Example</h1>
-    <button id="login-button" data-bind-onclick="loginWithSpotifyClick();"> Log in with Spotify </button>
+    
+    <button id="login-button" data-bind-onclick="loginWithSpotifyClick();"
+    style="background-color: #1DB954; color: white; border: none; padding: 12px 24px; border-radius: 50px; font-size: 16px; font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: background-color 0.3s ease; position: absolute; bottom: 250px; left: 50%; transform: translateX(-50%);">
+     Log in with Spotify </button>
   </template>
+  <style>
+    body {
+      background-image: url('/uiboattrip/assets/loginassets/loginmap.png'); /* Replace with the path to your PNG */
+        background-size: cover; /* Cover the entire page */
+        background-position: center center; /* Center the image */
+        background-repeat: no-repeat; /* Prevent repeating */
+        height: 100vh; /* Set height to full viewport */
+        margin: 0; /* Remove default margins */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+  </style>
 
   <template id="logged-in-template">
     <h1>Logged in as <span data-bind="display_name"></span></h1>
