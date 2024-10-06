@@ -1,14 +1,38 @@
 // script.js
 
-// Function to show the boat scene after UI sequence
-function showTopDestinationPopup() {
-    const popup = document.getElementById('top-destination-popup');
-    popup.style.display = 'block'; // Show the pop-up
+let popupShown = false; // Variable to track if the popup has already been shown
 
-    // Hide the pop-up 20 seconds after it appears
+// Function to show the top destination pop-up 10 seconds after the boat scene starts
+function showTopDestinationPopup() {
+    // Only show the pop-up if it hasn't been shown yet
+    if (!popupShown) {
+        const popup = document.getElementById('top-destination-popup');
+        popup.style.display = 'block'; // Show the pop-up
+        popupShown = true; // Mark popup as shown
+
+        // Add event listener to hide the pop-up when it is clicked
+        popup.addEventListener('click', () => {
+            popup.style.display = 'none'; // Hide the pop-up on click
+            // Show the closeout message after 5 seconds
+            setTimeout(showCloseoutMessage, 5000); // 5 seconds delay
+        });
+    }
+}
+
+// Function to show the closeout message
+function showCloseoutMessage() {
+    const closeoutMessage = document.getElementById('closeout-message');
+    closeoutMessage.style.display = 'block'; // Show the closeout message
+
+    // Hide the boat scene and transition to backmove and backstill after a delay (e.g., 3 seconds)
     setTimeout(() => {
-        popup.style.display = 'none';
-    }, 10000); // 10 seconds
+        closeoutMessage.style.display = 'none'; // Hide the closeout message
+        document.getElementById('boat-scene').style.display = 'none'; // Hide boat scene
+
+        // You can also set background properties to only show backmove and backstill as required
+        document.body.style.background = "url('./assets/backbasics/backstill.png')";
+        document.body.style.backgroundSize = "cover";
+    }, 2500); // 3 seconds delay for closing the boat scene
 }
 
 // Modify the showBoatScene function to include the pop-up
@@ -20,8 +44,9 @@ function showBoatScene() {
     changeGenre('pop'); // Manually set the genre to 'pop' or any other genre
 
     // Show the top destination popup after 10 seconds
-    setTimeout(showTopDestinationPopup, 20000); // 15 seconds delay
+    setTimeout(showTopDestinationPopup, 10000); // 10 seconds delay
 }
+
 
 // Function to handle UI sequence transitions
 function runUISequence() {

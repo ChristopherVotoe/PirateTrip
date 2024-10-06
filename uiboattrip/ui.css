@@ -10,6 +10,17 @@ body {
     align-items: center;
 }
 
+#closeout-message {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center perfectly */
+    width: 750px; /* Adjust the size as needed */
+    height: 500px; /* Adjust the size as needed */
+    z-index: 5; /* Ensure it's on top of other elements */
+    cursor: pointer;
+}
+
 #ui-sequence {
     width: 1500px; /* Match the background size for UI */
     height: 1000px; /* Match the background size for UI */
@@ -33,6 +44,7 @@ body {
     width: 750x; /* Adjust the size as needed */
     height: 500px;
     z-index: 4; /* Ensure it's on top of other elements */
+    cursor: pointer;
 }
 
 /* Each UI Page (Transparent PNG Overlay) */
