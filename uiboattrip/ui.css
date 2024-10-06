@@ -25,6 +25,16 @@ body {
     margin-left: 0px; /* Adjust horizontal position */
 }
 
+#top-destination-popup {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center perfectly */
+    width: 750x; /* Adjust the size as needed */
+    height: 500px;
+    z-index: 4; /* Ensure it's on top of other elements */
+}
+
 /* Each UI Page (Transparent PNG Overlay) */
 .page {
     width: 1500px; /* Match the 1500px width */
@@ -55,7 +65,7 @@ body {
     left: 0;
     width: 1500px; /* Match the background size for UI */
     height: 1000px; /* Match the background size for UI */
-    background: url('.'); /* Moving background image */
+    background: url('./assets/backbasics/backmove.png'); /* Moving background image */
     background-repeat: repeat-x;
     background-size: contain;
     opacity: 0.7;

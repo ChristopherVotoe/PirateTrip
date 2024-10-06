@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch and Print output.txt</title>
+</head>
+<body>
+    <h1>Fetch and Print output.txt</h1>
+    <pre id="fileContent"></pre>
+    <button id="printButton" style="display:none;">Print</button>
+
+    <script>
+        // Fetch the content of the output.txt file
+        fetch('output.txt')
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('fileContent').textContent = text;
+                // Show the print button after the file is fetched
+                document.getElementById('printButton').style.display = 'inline';
+            })
+            .catch(error => {
+                console.error('Error fetching the file:', error);
+                document.getElementById('fileContent').textContent = 'Error loading file';
+            });
+
+        // Function to print the content);
+    </script>
+</body>
+</html>
