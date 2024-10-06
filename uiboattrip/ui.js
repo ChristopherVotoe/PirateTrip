@@ -35,7 +35,7 @@ function showCloseoutMessage() {
     }, 2500); // 3 seconds delay for closing the boat scene
 }
 
-// Modify the showBoatScene function to include the pop-up
+// Modify the showBoatScene function to include the pop-up and play music
 function showBoatScene() {
     document.getElementById('ui-sequence').style.display = 'none'; // Hide UI sequence
     document.getElementById('boat-scene').style.display = 'block'; // Show boat scene
@@ -43,9 +43,14 @@ function showBoatScene() {
     // Set the genre here after transitioning to the boat scene
     changeGenre('pop'); // Manually set the genre to 'pop' or any other genre
 
+    // Play the background music when the boat scene starts
+    const music = document.getElementById('boat-scene-music');
+    music.play(); // Play the music
+
     // Show the top destination popup after 10 seconds
     setTimeout(showTopDestinationPopup, 10000); // 10 seconds delay
 }
+
 
 
 // Function to handle UI sequence transitions
