@@ -1,12 +1,26 @@
 // script.js
 
 // Function to show the boat scene after UI sequence
+function showTopDestinationPopup() {
+    const popup = document.getElementById('top-destination-popup');
+    popup.style.display = 'block'; // Show the pop-up
+
+    // Hide the pop-up 20 seconds after it appears
+    setTimeout(() => {
+        popup.style.display = 'none';
+    }, 10000); // 10 seconds
+}
+
+// Modify the showBoatScene function to include the pop-up
 function showBoatScene() {
     document.getElementById('ui-sequence').style.display = 'none'; // Hide UI sequence
     document.getElementById('boat-scene').style.display = 'block'; // Show boat scene
 
     // Set the genre here after transitioning to the boat scene
-    changeGenre('country'); // Manually set the genre to 'pop' or any other genre
+    changeGenre('pop'); // Manually set the genre to 'pop' or any other genre
+
+    // Show the top destination popup after 10 seconds
+    setTimeout(showTopDestinationPopup, 20000); // 15 seconds delay
 }
 
 // Function to handle UI sequence transitions
